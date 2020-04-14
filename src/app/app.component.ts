@@ -16,10 +16,13 @@ export class AppComponent {
   constructor() {
     this.sourceList = [];
     this.displayList = [];
+
     let satellitesUrl: string = 'https://handlers.education.launchcode.org/static/satellites.json';
 
-    window.fetch(satellitesUrl).then(function(response) {
-       response.json().then(function(data) {
+      
+    
+      window.fetch(satellitesUrl).then(function(response) {
+      response.json().then(function(data) {
 
           let fetchedSatellites = data.satellites;
           for (let i in fetchedSatellites) {
@@ -37,6 +40,7 @@ export class AppComponent {
        let name: string = this.sourceList[i].name.toLowerCase();
        if (name.indexOf(searchTerm) >= 0) {
           matchingSatellites.push(this.sourceList[i]);
+       
        }
     }
     this.displayList = matchingSatellites;
